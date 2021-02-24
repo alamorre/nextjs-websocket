@@ -1,17 +1,17 @@
 {
-  "name": "react-chat-engine-example",
+  "name": "nextjs-websocket-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3009 node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "PORT=4381 node ../node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
     "react": "link:../node_modules/react",
-    "react-chat-engine": "link:..",
+    "nextjs-websocket": "link:..",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts"
   },

@@ -1,6 +1,6 @@
 {
-  "short_name": "react-chat-engine",
-  "name": "react-chat-engine",
+  "short_name": "rnextjs-websocket",
+  "name": "nextjs-websocket",
   "icons": [
     {
       "src": "favicon.ico",

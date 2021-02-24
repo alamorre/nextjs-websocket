@@ -1,10 +1,10 @@
 {
-  "name": "react-chat-engine",
+  "name": "nextjs-websocket",
   "version": "1.5.14",
-  "description": "Cheap and easy chat API",
+  "description": "Reconnecting websocket which is NextJS Compatible",
   "author": "alamorre",
   "license": "MIT",
-  "repository": "alamorre/react-chat-engine",
+  "repository": "alamorre/nextjs-websocket",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -54,7 +54,6 @@
     "axios": "^0.21.1",
     "lodash": "^4.17.20",
     "react-grid-system": "^7.1.1",
-    "react-scroll": "^1.8.1",
-    "react-websocket": "^2.1.0"
+    "react-scroll": "^1.8.1"
   }
 }

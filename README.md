@@ -15,7 +15,7 @@ Add serverless chat to your React app in 3 minutes.
 
 2. Collect the **public key**, **username** and **user password**
 
-3. Install `yarn add react-chat-engine`
+3. Install `yarn add rnextjs-websocket`
 
 4. Import the `ChatEngine` component and pass in `publicKey`, `userName`, and `userSecret` props
 
@@ -26,7 +26,7 @@ EXAMPLE: Your implementation should look like the following
 ```jsx
 import React from 'react'
 
-import { ChatEngine } from 'react-chat-engine'
+import { ChatEngine } from 'nextjs-websocket'
 
 export function App() {
   return (
@@ -69,7 +69,7 @@ export function App() {
 ## Functions
 
 ```
-import { functionName } from 'react-chat-engine'
+import { functionName } from 'nextjs-websocket'
 
 ...
 

@@ -1,25 +1,11 @@
-<p align="center" >
-    <p align="center" >
-        <a href="https://chatengine.io/">
-            <img    
-                alt="react-chat-engine" 
-                style='max-height: 333px; max-width: 100%;'
-                src="https://chat-engine-assets.s3.amazonaws.com/NPM+Example.jpg" 
-            />
-        </a>
-    </p>
-</p>
+## NextJS Websocket
 
-## Chat Engine
-
-Chat Engine is a free serverless chat API.
-
-Try our free plan at [chatengine.io](https://chatengine.io)
+This is that
 
 ## Installation
 
-- Using [npm](https://www.npmjs.com/#getting-started): `npm install react-chat-engine --save`
-- Using [Yarn](https://yarnpkg.com/): `yarn add react-chat-engine`
+- Using [npm](https://www.npmjs.com/#getting-started): `npm install nextjs-websocket`
+- Using [Yarn](https://yarnpkg.com/): `yarn add nextjs-websocket`
 
 ## Getting Started
 
@@ -43,16 +29,15 @@ import React from 'react'
 import { ChatEngine } from 'react-chat-engine'
 
 export function App() {
-    return (
-        <ChatEngine
-            publicKey={'b75e5bd5-cd84-404c-b820-06feff8c98c0'}
-            userName={'john_smith'}
-            userSecret={'secret_1234'}
-        />
-    )
+  return (
+    <ChatEngine
+      publicKey={'b75e5bd5-cd84-404c-b820-06feff8c98c0'}
+      userName={'john_smith'}
+      userSecret={'secret_1234'}
+    />
+  )
 }
 ```
-
 
 ## Features
 
@@ -101,7 +86,6 @@ functionName(creds, args)
 - **`sendMessage`** _(props, chatId, messageObj) => void_ - Send a new message object into this chat
 - **`editMessage`** _(props, chatId, messageId, messageObj) => void_ - Edit an exiting message object in this chat
 - **`deleteMessage`** _(props, chatId, messageId) => void_ - Delete an exiting message object from this chat
-
 
 ## Objects
 

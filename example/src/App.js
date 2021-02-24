@@ -59,7 +59,7 @@ export default class App extends Component {
 
         return <WebSocket 
             url={`ws://127.0.0.1:8000/person/?publicKey=${project}&username=${username}&secret=${secret}`}
-            onOpen={() => console.log('hello')}
+            onOpen={() => console.log('Open Socket!!!')}
             onClose={this.onClose.bind(this)}
             onMessage={this.handleEvent.bind(this)}
         />

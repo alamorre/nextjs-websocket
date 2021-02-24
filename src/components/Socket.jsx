@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+var W3CWebSocket = require('websocket').w3cwebsocket;
+
 class Websocket extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ws: window.WebSocket
-        ? new window.WebSocket(this.props.url, this.props.protocol)
-        : new window.MozWebSocket(this.props.url, this.props.protocol),
+      ws: new W3CWebSocket(this.props.url),
       attempts: 1
     };
     this.sendMessage = this.sendMessage.bind(this);
@@ -54,11 +54,7 @@ class Websocket extends React.Component {
         let time = this.generateInterval(this.state.attempts);
         this.timeoutID = setTimeout(() => {
           this.setState({ attempts: this.state.attempts + 1 });
-          this.setState({
-            ws: window.WebSocket
-              ? new window.WebSocket(this.props.url, this.props.protocol)
-              : new window.MozWebSocket(this.props.url, this.props.protocol)
-          });
+          this.setState({ ws: new W3CWebSocket(this.props.url) });
           this.setupWebsocket();
         }, time);
       }

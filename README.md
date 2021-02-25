@@ -18,7 +18,7 @@ npm install --save nextjs-websocket
 
 ```js
 import React from 'react'
-import Websocket from 'nextjs-websocket'
+import { Websocket } from 'nextjs-websocket'
 
 class ProductDetail extends React.Component {
   constructor(props) {

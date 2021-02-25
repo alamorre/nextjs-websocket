@@ -1,136 +1,85 @@
-## NextJS Websocket
+# nextjs-websocket
 
-This is that
+`nextjs-websocket` is a easy-to-use NextJS component for websocket communications.
 
-## Installation
+## Notes
 
-- Using [npm](https://www.npmjs.com/#getting-started): `npm install nextjs-websocket`
-- Using [Yarn](https://yarnpkg.com/): `yarn add nextjs-websocket`
+If you need me to build something, just raise an issue:)
 
-## Getting Started
+This was a fork from react-websocket so s/o to the devs there :)
 
-Add serverless chat to your React app in 3 minutes.
+### Installing
 
-1. Register then create a **project** and **user** at [chatengine.io](https://chatengine.io)
+```
+npm install --save nextjs-websocket
+```
 
-2. Collect the **public key**, **username** and **user password**
+### Usage
 
-3. Install `yarn add rnextjs-websocket`
-
-4. Import the `ChatEngine` component and pass in `publicKey`, `userName`, and `userSecret` props
-
-5. Voila! You're done
-
-EXAMPLE: Your implementation should look like the following
-
-```jsx
+```js
 import React from 'react'
+import Websocket from 'nextjs-websocket'
 
-import { ChatEngine } from 'nextjs-websocket'
+class ProductDetail extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 90
+    }
+  }
 
-export function App() {
-  return (
-    <ChatEngine
-      publicKey={'b75e5bd5-cd84-404c-b820-06feff8c98c0'}
-      userName={'john_smith'}
-      userSecret={'secret_1234'}
-    />
-  )
+  handleData(data) {
+    let result = JSON.parse(data)
+    this.setState({ count: this.state.count + result.movement })
+  }
+
+  render() {
+    return (
+      <div>
+        Count: <strong>{this.state.count}</strong>
+        <Websocket
+          url='ws://localhost:8888/live/product/12345/'
+          onMessage={this.handleData.bind(this)}
+        />
+      </div>
+    )
+  }
 }
+
+export default ProductDetail
 ```
 
-## Features
+### Properties
 
-- Authenticate users
-- Subscribe (connect) to incoming chats and messages
-- Create chats and messages
-- Add and remove people from chats
-- Edit and delete chat and message data
+#### url
 
-## Props
+**required**
+The url the websocket connection is listening to.
 
-- **`publicKey`** _(UUID REQUIRED)_ - Public API key for your [chatengine.io](https://chatengine.io) project
-- **`userName`** _(String REQUIRED)_ - Username of a person in this project
-- **`userSecret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
-- **`onConnect`** (Function) - Callback when the connection/authentication is complete
-- **`onFailAuth`** (Function) - Callback when the connection/authentication fails
-- **`onGetChats`** _(Function)_ Callback when the person fetches their chats array
-- **`onNewChat`** _(Function)_ - Callback when the person creates a new chat
-- **`onEditChat`** _(Function)_ - Callback when the person edits a chat title
-- **`onDeleteChat`** _(Function)_ - Callback when the person deletes one of their chats (must the chat's admin)
-- **`onAddPerson`** _(Function)_ - Callback when a person is added to a chat
-- **`onRemovePerson`** _(Function)_ - Callback when a person is removed/deleted from a chat
-- **`onGetMessages`** _(Function)_ - Callback when the person gets a chat's messages
-- **`onNewMessage`** _(Function)_ - Callback when a person posts a new message in one of the chats
-- **`onEditMessage`** _(Function)_ - Callback when a person edits a new message in one of the chats
-- **`onDeleteMessage`** _(Function)_ - Callback when a person deletes a new message in one of the chats
-- **`hideUI`** _(Boolean)_ - Hides all UI components for a custom implementation (Warning: Advanced)
+#### onMessage
 
-## Functions
+**required**
+The callback called when data is received. Data is `JSON.parse`'d
 
-```
-import { functionName } from 'nextjs-websocket'
+#### onOpen
 
-...
+The callback called when the connection is successfully opened.
 
-functionName(creds, args)
-```
+#### onClose
 
-- **`getChats`** _(creds) => void_ - Get a person's array of chats
-- **`newChat`** _(creds, title) => void_ - Create a new chat with this person as admin
-- **`editChat`** _(creds, chatId, chatObj) => void_ - Edit the title of an existing chat
-- **`deleteChat`** _(creds, chatId) => void_ - If you're admin, delete this existing chat
-- **`addPerson`** _(props, chatId, userName) => void_ - Add an existing person (in the project) to an existing chat
-- **`removePerson`** _(props, chatId, userName) => void_ - If you're admin, remove this user from an existing chat
-- **`getMessages`** _(props, chatId) => void_ - Get the messages for an existing chat
-- **`sendMessage`** _(props, chatId, messageObj) => void_ - Send a new message object into this chat
-- **`editMessage`** _(props, chatId, messageId, messageObj) => void_ - Edit an exiting message object in this chat
-- **`deleteMessage`** _(props, chatId, messageId) => void_ - Delete an exiting message object from this chat
+The callback called when the connection is closed either due to server disconnect or network error.
 
-## Objects
+#### debug
 
-### Chat Object
+default: **false**
+Set to **true** to see console logging
 
-- **`id`** _(int)_ - Unique primary key to identify this chat
-- **`admin`** _(String)_ - Unique username of the person who created this chat
-- **`title`** _(String)_ - Optional title of this chat
-- **`created`** _(Datetime)_ - Date-time of chat creation
-- **`people`** _(Array)_ - Array of people added to this chat
+#### reconnect
 
-```
-{
-    "id": 1,
-    "admin": "john_smith",
-    "title": "Canada Day Party!",
-    "created": "2020-09-05T20:28:22.352373Z",
-    "people": [
-        {
-            "person": "john_smith"
-        }
-    ]
-}
-```
+default: **true**
 
-### Chat / Person Association
+accelerated reconnection time
 
-- **`person`** _(String)_ - Unique username of a person involved in this chat
+## License
 
-```
-{ person: "john_smith" }
-```
-
-### Message Object
-
-- **`id`** _(int)_ - Unique primary key to identify this message
-- **`sender`** _(String)_ - Unique username of the person who sent this message
-- **`text`** (String) - Contents of the message sent
-- **`created`** (Datetime) - Date-time of message creation
-
-```
-{
-    "id": 1,
-    "sender": "john_smith",
-    "text": "Hey let's party!",
-    "created": "2020-09-07T13:20:26.936400Z"
-}
-```
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmehmetkose%2Fnextjs-websocket.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmehmetkose%2Fnextjs-websocket?ref=badge_large)

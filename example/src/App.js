@@ -58,6 +58,7 @@ export default class App extends Component {
         const secret = 'pass1234'
 
         return <WebSocket 
+            reconnect={true}
             childRef={ref => console.log('ref', ref)}
             url={`ws://127.0.0.1:8000/person/?publicKey=${project}&username=${username}&secret=${secret}`}
             onOpen={() => console.log('Open Socket!!!')}

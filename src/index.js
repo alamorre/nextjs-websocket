@@ -60,12 +60,19 @@ class WebSocket extends React.Component {constructor(props) {
   }
 
   componentDidMount() {
+    const { childRef } = this.props;
+    childRef(this);
+
     this.setupWebsocket();
   }
 
   componentWillUnmount() {
+    const { childRef } = this.props;
+    childRef(undefined);
+
     this.shouldReconnect = false;
     clearTimeout(this.timeoutID);
+
     let websocket = this.state.ws;
     websocket.close();
   }

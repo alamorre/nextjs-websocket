@@ -15,8 +15,6 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
-    "test": "nightwatch -c tests/tests_conf/nightwatch.conf.js",
-    "test-headless": "nightwatch -c tests/tests_conf/nightwatch.conf.js --headless",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
@@ -25,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
+    "chromedriver": "^87.0.4",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",

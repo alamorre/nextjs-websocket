@@ -29,7 +29,7 @@ class WebSocket extends React.Component {constructor(props) {
     let websocket = this.state.ws;
 
     websocket.onopen = () => {
-      this.logging('Websocket connected');
+      this.logging('Websocket connected...');
       if (typeof this.props.onOpen === 'function') this.props.onOpen();
     };
 

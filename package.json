@@ -1,6 +1,6 @@
 {
   "name": "nextjs-websocket",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Reconnecting websocket which is NextJS Compatible",
   "author": "alamorre",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.0 || ^17.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

@@ -1,6 +1,8 @@
-import { WebSocket } from 'nextjs-websocket'
+import { useState } from 'react'
+import { WebSocketNext } from 'nextjs-websocket'
 
 const App = (props: any) => {
+  const [open, setOpen] = useState(true)
   const handleEvent = (event: any) => {
     console.log('event.data', event.data)
     const eventJSON = JSON.parse(event.data)
@@ -39,19 +41,26 @@ const App = (props: any) => {
   }
 
   const onClose = () => {
+    console.log('Closed socket.')
     props.onFailAuth && props.onFailAuth(props)
   }
 
   const sessionToken = 'st-6e973176-cffd-4d54-8d3c-3a6372867929'
 
   return (
-    <WebSocket
-      reconnect={true}
-      url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
-      onOpen={() => console.log('Open Socket!!!')}
-      onClose={onClose.bind(this)}
-      onMessage={handleEvent.bind(this)}
-    />
+    <>
+      <button onClick={() => setOpen(!open)}>Toggle socket</button>
+
+      {open && (
+        <WebSocketNext
+          reconnect={true}
+          url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
+          onOpen={() => console.log('Open socket!')}
+          onClose={onClose.bind(this)}
+          onMessage={handleEvent.bind(this)}
+        />
+      )}
+    </>
   )
 }
 

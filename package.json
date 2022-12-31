@@ -1,6 +1,6 @@
 {
   "name": "nextjs-websocket",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Reconnecting websocket which is NextJS Compatible",
   "author": "alamorre",
   "license": "MIT",

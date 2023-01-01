@@ -41,7 +41,7 @@ const WebSocketNext = (props) => {
           setAttempts(attempts + 1)
           setWS(new W3CWebSocket(props.url))
           setupWebsocket()
-        }, 3000)
+        }, props.reconnectIntervalInMilliSeconds || 3000)
         setTimeoutID(tid)
       }
     }

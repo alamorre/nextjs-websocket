@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { WebSocketNext } from 'nextjs-websocket'
 
 const App = (props: any) => {
-  const [open, setOpen] = useState(true)
+  const [count, setCount] = useState(3000)
   const handleEvent = (event: any) => {
     console.log('event.data', event.data)
     const eventJSON = JSON.parse(event.data)
@@ -49,17 +49,16 @@ const App = (props: any) => {
 
   return (
     <>
-      <button onClick={() => setOpen(!open)}>Toggle socket</button>
+      <button onClick={() => setCount(count + 1)}>Toggle socket</button>
 
-      {open && (
-        <WebSocketNext
-          reconnect={true}
-          url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
-          onOpen={() => console.log('Open socket!')}
-          onClose={onClose.bind(this)}
-          onMessage={handleEvent.bind(this)}
-        />
-      )}
+      <WebSocketNext
+        reconnect={true}
+        reconnectIntervalInMilliSeconds={count}
+        url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
+        onOpen={() => console.log('Open socket ', count)}
+        onClose={onClose.bind(this)}
+        onMessage={handleEvent.bind(this)}
+      />
     </>
   )
 }

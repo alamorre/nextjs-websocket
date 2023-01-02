@@ -51,14 +51,16 @@ const App = (props: any) => {
     <>
       <button onClick={() => setCount(count + 1)}>Toggle socket</button>
 
-      <WebSocketNext
-        reconnect={true}
-        reconnectIntervalInMilliSeconds={count}
-        url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
-        onOpen={() => console.log('Open socket ', count)}
-        onClose={onClose.bind(this)}
-        onMessage={handleEvent.bind(this)}
-      />
+      {count % 3 !== 0 && (
+        <WebSocketNext
+          reconnect={true}
+          reconnectIntervalInMilliSeconds={count}
+          url={`wss://api.chatengine.io/person_v4/?session_token=${sessionToken}`}
+          onOpen={() => console.log('Open socket ', count)}
+          onClose={onClose.bind(this)}
+          onMessage={handleEvent.bind(this)}
+        />
+      )}
     </>
   )
 }

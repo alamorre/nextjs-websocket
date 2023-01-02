@@ -47,7 +47,7 @@ const WebSocketNext = (props) => {
     }
   }
 
-  return <div>{props.reconnectIntervalInMilliSeconds}</div>
+  return <div></div>
 }
 
 export { WebSocketNext }

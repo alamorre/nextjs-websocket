@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 import { FunctionPrimitive } from '@xenopomp/advanced-types'
 
 // TODO refine callbacks` arguments
@@ -12,6 +12,9 @@ declare type WebSocketProps = {
 
   /** The callback called when the connection is successfully opened. */
   onOpen?: FunctionPrimitive,
+
+  /** The callback called when error is appeared during WS cycle. */
+  onError?: (error: Error) => any;
 
   /** The callback called when the connection is closed either due to server disconnect or network error. */
   onClose?: FunctionPrimitive,
@@ -34,13 +37,4 @@ declare type WebSocketProps = {
   reconnect: false;
 }
 
-// prettier-ignore
-declare class WebSocket extends React.Component {
-  constructor(props: WebSocketProps);
-
-  logging(logline: string): void;
-
-  generateInterval(k: number): number;
-
-  setupWebsocket(): void;
-}
+declare const WebSocket: FC<WebSocketProps>

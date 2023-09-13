@@ -8,10 +8,10 @@
     "jsx": "react",
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "outDir": "../dist"
+    "outDir": "../dist/ts"
   },
   "exclude": [
-    "../node_modules"
+    "../node_modules",
   ],
   "include": [
     "index.ts",

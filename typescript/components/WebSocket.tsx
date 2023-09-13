@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { WebSocketProps } from './types/WebSocket.props'
+import { WebSocketProps } from '../types/WebSocket.props'
 
 const WebSocket: FC<WebSocketProps> = (props) => {
   return <div {...props} />

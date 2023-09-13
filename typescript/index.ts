@@ -1,4 +1,4 @@
-import WebSocket from './WebSocket'
-import WebSocketNext from './WebSocketNext'
+import WebSocket from './components/WebSocket'
+import WebSocketNext from './components/WebSocketNext'
 
 export { WebSocket, WebSocketNext }

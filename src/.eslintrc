@@ -1,5 +1,6 @@
 {
   "env": {
     "jest": true
-  }
+  },
+  "plugins": ["typescript"]
 }

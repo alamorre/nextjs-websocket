@@ -29,7 +29,7 @@ class WebSocket extends React.Component {
   }
 
   setupWebsocket() {
-    let websocket = this.state.ws
+    const websocket = this.state.ws
 
     websocket.onopen = () => {
       this.logging('Websocket connected...')
@@ -52,7 +52,7 @@ class WebSocket extends React.Component {
       if (typeof this.props.onClose === 'function')
         this.props.onClose(evt.code, evt.reason)
       if (this.shouldReconnect) {
-        let time = this.generateInterval(this.state.attempts)
+        const time = this.generateInterval(this.state.attempts)
         this.timeoutID = setTimeout(() => {
           this.setState({ attempts: this.state.attempts + 1 })
           this.setState({ ws: new W3CWebSocket(this.props.url) })
@@ -76,17 +76,17 @@ class WebSocket extends React.Component {
     this.shouldReconnect = false
     clearTimeout(this.timeoutID)
 
-    let websocket = this.state.ws
+    const websocket = this.state.ws
     websocket.close()
   }
 
   sendMessage(message) {
-    let websocket = this.state.ws
+    const websocket = this.state.ws
     websocket.send(message)
   }
 
   render() {
-    return <div></div>
+    return <div />
   }
 }
 

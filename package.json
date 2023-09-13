@@ -8,21 +8,23 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
-  "types": "src/index.d.ts",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs && npm run types",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "types": "tsc -p typescript/tsconfig.json"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.1 || ^18.2.0"
   },
   "devDependencies": {
+    "@types/react": "^18.2.21",
     "@xenopomp/advanced-types": "^1.1.7",
     "babel-eslint": "^10.0.3",
     "chromedriver": "^87.0.4",
